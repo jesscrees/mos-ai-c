@@ -41,33 +41,48 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by choosing a task
-          </p>
-        </div>
 
-        
-        <div className={styles.grid}>
+      <main className={`${styles.main} ${inter.className}`}>
+        <div className={styles.helpers}>
           <details>
             <summary>Pet Name Generator</summary>
-            <form onSubmit={onPetNameGeneratorSubmit}>
-            <input
-              type="text"
-              name="petNameGeneratorInput"
-              placeholder="Enter an animal"
-              value={petNameGeneratorInput}
-              onChange={(e) => setPetNameGeneratorInput(e.target.value)}
-            />
-            <input type="submit" value="Generate names" />
-          </form>
-          <div>{petNameGeneratorResult}</div>
+            <div className={styles.content}>
+              <div className={styles.userInput}>
+                <form onSubmit={onPetNameGeneratorSubmit}>
+                  <input
+                    className={styles.singleLineInput}
+                    type="text"
+                    name="petNameGeneratorInput"
+                    placeholder="Enter an animal"
+                    value={petNameGeneratorInput}
+                    onChange={(e) => setPetNameGeneratorInput(e.target.value)}
+                  />
+                  <input type="submit" value="Generate names" />
+                </form>
+              </div>
+              {petNameGeneratorResult && (
+              <div className={styles.promptResults}>
+                {petNameGeneratorResult}
+              </div>
+              )}
+            </div>
           </details>
          
           <details>
             <summary>Text Summariser</summary>
-            Form goes here
+            <div className={styles.content}>
+              {/* <form onSubmit={onPetNameGeneratorSubmit}>
+                <input
+                  type="text"
+                  name="petNameGeneratorInput"
+                  placeholder="Enter an animal"
+                  value={petNameGeneratorInput}
+                  onChange={(e) => setPetNameGeneratorInput(e.target.value)}
+                />
+                <input type="submit" value="Generate names" />
+              </form>
+              <div>{petNameGeneratorResult}</div> */}
+            </div>
           </details>
         </div>
       </main>
