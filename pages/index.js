@@ -44,8 +44,34 @@ export default function Home() {
 
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.helpers}>
-          <details>
-            <summary>Pet Name Generator</summary>
+        <section className={styles.section}>
+            <h2>Text Summariser</h2>
+
+            <div className={styles.content}>
+              <div className={styles.userInput}>
+                {/* <form onSubmit={onPetNameGeneratorSubmit}>
+                  <input
+                    className={styles.singleLineInput}
+                    type="text"
+                    name="petNameGeneratorInput"
+                    placeholder="Enter an animal"
+                    value={petNameGeneratorInput}
+                    onChange={(e) => setPetNameGeneratorInput(e.target.value)}
+                  />
+                  <input type="submit" value="Generate names" />
+                </form> */}
+              </div>
+              {/* {petNameGeneratorResult && (
+              <div className={styles.promptResults}>
+                {petNameGeneratorResult}
+              </div>
+              )} */}
+            </div>
+          </section>
+
+          <section className={styles.section}>
+            <h2>Pet Name Generator</h2>
+
             <div className={styles.content}>
               <div className={styles.userInput}>
                 <form onSubmit={onPetNameGeneratorSubmit}>
@@ -66,24 +92,7 @@ export default function Home() {
               </div>
               )}
             </div>
-          </details>
-         
-          <details>
-            <summary>Text Summariser</summary>
-            <div className={styles.content}>
-              {/* <form onSubmit={onPetNameGeneratorSubmit}>
-                <input
-                  type="text"
-                  name="petNameGeneratorInput"
-                  placeholder="Enter an animal"
-                  value={petNameGeneratorInput}
-                  onChange={(e) => setPetNameGeneratorInput(e.target.value)}
-                />
-                <input type="submit" value="Generate names" />
-              </form>
-              <div>{petNameGeneratorResult}</div> */}
-            </div>
-          </details>
+          </section>
         </div>
       </main>
     </>

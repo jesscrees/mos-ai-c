@@ -16,15 +16,21 @@
   width: var(--max-width);
 }
 
-.helpers details summary {
-  cursor: pointer;
-}
-
-.helpers .content {
+.helpers section {
+  background-color: white;
+  -webkit-box-shadow: 6px 7px 10px 0px rgba(0,0,0,0.18);
+  -moz-box-shadow: 6px 7px 10px 0px rgba(0,0,0,0.18);
+  box-shadow: 6px 7px 10px 0px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 1rem 2rem;
+}
+
+.helpers section .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .helpers .content .userInput form .singleLineInput {
@@ -37,7 +43,7 @@
 .helpers .content .userInput form input[type=submit] {
   border: 0.2rem solid rgb(var(--accent-rgb));
   box-shadow: inset 0 0 0 0 rgb(var(--accent-rgb));
-  color: rgb(var(--background-rgb));
+  color: rgb(var(--accent-rgb));
   cursor: pointer;
   letter-spacing: 0.1rem;
   padding: 1rem 2rem;

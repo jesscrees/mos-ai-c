@@ -3,9 +3,9 @@
 :root {
   --max-width: 600px;
 
-  --foreground-rgb: 242, 229, 215;
-  --background-rgb: 99, 55, 44;
-  --accent-rgb: 255, 128, 0;
+  --foreground-rgb: 46, 41, 78;
+  --background-rgb: 247, 240, 240;
+  --accent-rgb: 244, 96, 54;
 }
 
 * {
