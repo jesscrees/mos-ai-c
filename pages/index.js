@@ -9,15 +9,18 @@ export default function Home() {
   const [petNameGeneratorInput, setPetNameGeneratorInput] = useState("");
   const [petNameGeneratorResult, setPetNameGeneratorResult] = useState();
 
-  async function onPetNameGeneratorSubmit(event) {
+  const [textSummariserInput, setTextSummariserInput] = useState("");
+  const [textSummariserResult, setTextSummariserResult] = useState();
+
+  async function onUserInputSubmit(event, apiFileName, userInput, setResultFunction) {
     event.preventDefault();
     try {
-      const response = await fetch("/api/petNameGenerator", {
+      const response = await fetch(`/api/${apiFileName}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: petNameGeneratorInput }),
+        body: JSON.stringify({ userInput: userInput }),
       });
 
       const data = await response.json();
@@ -25,8 +28,8 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setPetNameGeneratorResult(data.result);
-      setPetNameGeneratorInput("");
+      console.log(data.result)
+      setResultFunction(data.result);
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -49,23 +52,26 @@ export default function Home() {
 
             <div className={styles.content}>
               <div className={styles.userInput}>
-                {/* <form onSubmit={onPetNameGeneratorSubmit}>
-                  <input
-                    className={styles.singleLineInput}
+                <form onSubmit={(event) => onUserInputSubmit(event, 'textSummariser', textSummariserInput, setTextSummariserResult)}>
+                  <textarea
+                    className={styles.multiLineInput}
                     type="text"
-                    name="petNameGeneratorInput"
-                    placeholder="Enter an animal"
-                    value={petNameGeneratorInput}
-                    onChange={(e) => setPetNameGeneratorInput(e.target.value)}
+                    name="textSummariserInput"
+                    placeholder="Enter a piece of text to summarise"
+                    rows="5"
+                    value={textSummariserInput}
+                    onChange={(e) => setTextSummariserInput(e.target.value)}
                   />
-                  <input type="submit" value="Generate names" />
-                </form> */}
+                  <input type="submit" value="Generate summary" />
+                </form>
               </div>
-              {/* {petNameGeneratorResult && (
+              {textSummariserResult && (
               <div className={styles.promptResults}>
-                {petNameGeneratorResult}
+                <ul>
+                  {textSummariserResult}
+                </ul>
               </div>
-              )} */}
+              )}
             </div>
           </section>
 
@@ -74,7 +80,7 @@ export default function Home() {
 
             <div className={styles.content}>
               <div className={styles.userInput}>
-                <form onSubmit={onPetNameGeneratorSubmit}>
+                <form onSubmit={(event) => onUserInputSubmit(event, 'petNameGenerator', petNameGeneratorInput, setPetNameGeneratorResult)}>
                   <input
                     className={styles.singleLineInput}
                     type="text"
