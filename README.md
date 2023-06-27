@@ -1,6 +1,6 @@
 
 # mos-AI-c
-AI helpers created by Jess Crees using the OpenAI API
+AI helpers created using the OpenAI API
 
 ### Running project
 
