@@ -12,6 +12,9 @@ export default function Home() {
   const [textSummariserInput, setTextSummariserInput] = useState("");
   const [textSummariserResult, setTextSummariserResult] = useState();
 
+  const [twoSentenceStoryGeneratorInput, setTwoSentenceStoryGeneratorInput] = useState("");
+  const [twoSentenceStoryGeneratorResult, setTwoSentenceStoryGeneratorResult] = useState();
+
   async function onUserInputSubmit(event, apiFileName, userInput, setResultFunction) {
     event.preventDefault();
     try {
@@ -47,7 +50,31 @@ export default function Home() {
 
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.helpers}>
-        <section className={styles.section}>
+          <section className={styles.section}>
+            <h2>Two Sentence Story Generator</h2>
+
+            <div className={styles.content}>
+              <div className={styles.userInput}>
+                <form onSubmit={(event) => onUserInputSubmit(event, 'twoSentenceStoryGenerator', twoSentenceStoryGeneratorInput, setTwoSentenceStoryGeneratorResult)}>
+                  <input
+                    className={styles.singleLineInput}
+                    type="text"
+                    name="twoSentenceStoryGeneratorInput"
+                    placeholder="Enter a topic"
+                    value={twoSentenceStoryGeneratorInput}
+                    onChange={(e) => setTwoSentenceStoryGeneratorInput(e.target.value)}
+                  />
+                  <input type="submit" value="Generate story" />
+                </form>
+              </div>
+              {twoSentenceStoryGeneratorResult && (
+              <div className={styles.promptResults}>
+                {twoSentenceStoryGeneratorResult}
+              </div>
+              )}
+            </div>
+          </section>
+          <section className={styles.section}>
             <h2>Text Summariser</h2>
 
             <div className={styles.content}>
